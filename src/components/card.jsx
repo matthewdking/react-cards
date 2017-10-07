@@ -11,7 +11,8 @@ const Cards = (props) => {
 
   return (
     <div>
-      <img onClick={ nextCard } src={ props.card } />
+      <img className="prevCard" onClick={ nextCard } src={ props.prevCardNum } />
+      <img className="cardImage" onClick={ nextCard } src={ props.card } />
       <div>
         <button onClick={ prevCard }>Previous</button>
         <button onClick={ nextCard }>Next</button>

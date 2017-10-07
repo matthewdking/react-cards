@@ -17,22 +17,26 @@ class App extends Component {
 
   nextCard() {
     if (this.state.cardNum === this.state.cards.length - 1) {
-      this.setState({ cardNum: 0 });
+      this.setState({ cardNum: 0, prevCardNum: this.state.cards.length - 1 });
     } else {
       let stateCardNum = this.state.cardNum;
       stateCardNum += 1;
-      this.setState({ cardNum: stateCardNum });
+      this.setState({ cardNum: stateCardNum, prevCardNum: stateCardNum - 1 });
     }
   }
 
   prevCard() {
     if (this.state.cardNum === 0) {
-      this.setState({ cardNum: this.state.cards.length - 1 });
+      this.setState({ cardNum: this.state.cards.length - 1, prevCardNum: 0 });
     } else {
       let stateCardNum = this.state.cardNum;
       stateCardNum -= 1;
-      this.setState({ cardNum: stateCardNum });
+      this.setState({ cardNum: stateCardNum, prevCardNum: stateCardNum + 1 });
     }
+  }
+
+  componentDidMount() {
+    document.querySelector('.prevCard').classList.add('slideOutLeft');
   }
 
   render() {
@@ -41,7 +45,8 @@ class App extends Component {
         <h1> Click for next card</h1>
         <Card nextCard={this.nextCard}
           prevCard={this.prevCard}
-          card={ this.state.cards[this.state.cardNum] }/>
+          card={ this.state.cards[this.state.cardNum]}
+          prevCardNum={ this.state.cards[this.state.prevCardNum]}/>
       </div>
     );
   }
