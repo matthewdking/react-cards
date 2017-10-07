@@ -5,7 +5,8 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   devtool: 'inline-source-map',
   devServer: {
@@ -24,6 +25,10 @@ module.exports = {
       {
         test: /\.css$/,
         loaders: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        loader: 'file-loader'
       }
     ]
   },
