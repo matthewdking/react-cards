@@ -12,6 +12,7 @@ class App extends Component {
     };
 
     this.nextCard = this.nextCard.bind(this);
+    this.prevCard = this.prevCard.bind(this);
   }
 
   nextCard() {
@@ -24,11 +25,23 @@ class App extends Component {
     }
   }
 
+  prevCard() {
+    if (this.state.cardNum === 0) {
+      this.setState({ cardNum: this.state.cards.length - 1 });
+    } else {
+      let stateCardNum = this.state.cardNum;
+      stateCardNum -= 1;
+      this.setState({ cardNum: stateCardNum });
+    }
+  }
+
   render() {
     return (
       <div className="app">
         <h1> Click for next card</h1>
-        <Card nextCard={this.nextCard} card={ this.state.cards[this.state.cardNum] }/>
+        <Card nextCard={this.nextCard}
+          prevCard={this.prevCard}
+          card={ this.state.cards[this.state.cardNum] }/>
       </div>
     );
   }

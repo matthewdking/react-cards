@@ -5,8 +5,18 @@ const Cards = (props) => {
     props.nextCard();
   };
 
+  const prevCard = () => {
+    props.prevCard();
+  };
+
   return (
-    <img onClick={ nextCard } src={ props.card } />
+    <div>
+      <img onClick={ nextCard } src={ props.card } />
+      <div>
+        <button onClick={ prevCard }>Previous</button>
+        <button onClick={ nextCard }>Next</button>
+      </div>
+    </div>
   );
 };
 
